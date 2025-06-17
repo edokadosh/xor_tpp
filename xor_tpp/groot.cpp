@@ -15,7 +15,7 @@ int main() {
     }
     if (number < 0) {
         cout << "Expected positive value" << endl;
-        return 1;
+        return 2;
     }
     cout << "The square root is: " << sqrt(number) << endl;
 
