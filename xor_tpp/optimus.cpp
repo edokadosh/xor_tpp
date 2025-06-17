@@ -4,6 +4,7 @@
 using std::cin;
 using std::cout;
 using std::endl;
+using std::vector;
 
 namespace {
 // Check if unsigned value is prime
@@ -19,9 +20,9 @@ bool isPrime(const unsigned &num) {
 } // namespace
 
 int main() {
-    std::vector<unsigned> numbersToCheck = {4, 5, 23, 237, 7};
+    vector<unsigned> numbersToCheck = {4, 5, 23, 237, 7};
 
-    for (auto num : numbersToCheck) {
+    for (const auto &num : numbersToCheck) {
         cout << num << " is " << (isPrime(num) ? "" : "not ") << "prime" << endl;
     }
 
