@@ -15,14 +15,14 @@ class Calculator {
 // are short and i dont mind them being inline
 class ZeroDivisionException : public std::exception {
   public:
-    const char *what() {
+    const char *what() const override {
         return "Encountered zero division";
     }
 };
 
 class UnknownOperatorException : public std::exception {
   public:
-    const char *what() {
+    const char *what() const override {
         return "Encountered unknown operator";
     }
 };
