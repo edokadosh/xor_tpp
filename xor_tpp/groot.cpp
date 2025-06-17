@@ -10,13 +10,11 @@ int main() {
 
     cout << "Enter number: ";
     cin >> number;
-    if (cin.fail())
-    {
+    if (cin.fail()) {
         cout << "Expected double" << endl;
         return 1;
     }
-    if (number < 0)
-    {
+    if (number < 0) {
         cout << "Expected positive value" << endl;
         return 1;
     }
