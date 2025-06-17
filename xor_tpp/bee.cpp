@@ -5,6 +5,9 @@
 using std::cin;
 using std::cout;
 using std::endl;
+using std::vector;
+
+constexpr unsigned NUMBER_OF_PRIMES_TO_FIND = 10;
 
 namespace {
 // Check if unsigned value is prime
@@ -17,10 +20,10 @@ bool isPrime(unsigned num) {
     return true;
 }
 
-void findNumberOfFirstPrimes(std::vector<unsigned> &resultPrimes, unsigned numebrOfPrimesToFind) {
+void findNumberOfFirstPrimes(vector<unsigned> &resultPrimes, unsigned numberOfPrimesToFind) {
     unsigned currentNumber = 2;
 
-    while (resultPrimes.size() < numebrOfPrimesToFind) {
+    while (resultPrimes.size() < numberOfPrimesToFind) {
         if (isPrime(currentNumber)) {
             resultPrimes.push_back(currentNumber);
         }
@@ -28,17 +31,24 @@ void findNumberOfFirstPrimes(std::vector<unsigned> &resultPrimes, unsigned numeb
     }
 }
 
+void printVector(const vector<unsigned> &vec) {
+    for (auto i : vec) {
+        cout << i << endl;
+    }
+}
+
 } // namespace
 
-int main() {
-    std::vector<unsigned> result = {};
 
-    findNumberOfFirstPrimes(result, 10);
+
+int main() {
+    vector<unsigned> result = {};
+    result.reserve(NUMBER_OF_PRIMES_TO_FIND);
+
+    findNumberOfFirstPrimes(result, NUMBER_OF_PRIMES_TO_FIND);
 
     cout << "Got primes:" << endl;
-    for (auto p : result) {
-        cout << p << endl;
-    }
+    printVector(result);
 
     return 0;
 }
