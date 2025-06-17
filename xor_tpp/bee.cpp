@@ -20,20 +20,22 @@ bool isPrime(unsigned num) {
     return true;
 }
 
-void findNumberOfFirstPrimes(vector<unsigned> &resultPrimes, unsigned numberOfPrimesToFind) {
+void findNumberOfFirstPrimes(unsigned* result, unsigned numberOfPrimesToFind) {
     unsigned currentNumber = 2;
+    unsigned index = 0;
 
-    while (resultPrimes.size() < numberOfPrimesToFind) {
+    while (index < numberOfPrimesToFind) {
         if (isPrime(currentNumber)) {
-            resultPrimes.push_back(currentNumber);
+            result[index] = currentNumber;
+            index++;
         }
         currentNumber++;
     }
 }
 
-void printVector(const vector<unsigned> &vec) {
-    for (auto i : vec) {
-        cout << i << endl;
+void printArray(const unsigned *arr, unsigned length) {
+    for (unsigned i = 0; i < length; i++) {
+        cout << arr[i] << endl;       
     }
 }
 
@@ -42,13 +44,14 @@ void printVector(const vector<unsigned> &vec) {
 
 
 int main() {
-    vector<unsigned> result = {};
-    result.reserve(NUMBER_OF_PRIMES_TO_FIND);
+    unsigned *result = new unsigned[NUMBER_OF_PRIMES_TO_FIND];
 
     findNumberOfFirstPrimes(result, NUMBER_OF_PRIMES_TO_FIND);
 
     cout << "Got primes:" << endl;
-    printVector(result);
+    printArray(result, NUMBER_OF_PRIMES_TO_FIND);
+
+    delete[] result;
 
     return 0;
 }
