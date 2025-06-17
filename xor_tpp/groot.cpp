@@ -9,8 +9,7 @@ int main() {
     double number = 0;
 
     cout << "Enter number: ";
-    cin >> number;
-    if (cin.fail()) {
+    if (!(cin >> number)) {
         cout << "Expected double" << endl;
         return 1;
     }
