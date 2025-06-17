@@ -41,7 +41,7 @@ void printArray(std::unique_ptr<unsigned[]>  &arr, unsigned length) {
 
 
 int main() {
-    std::unique_ptr<unsigned[]> result = std::make_unique<unsigned[]>(NUMBER_OF_PRIMES_TO_FIND);
+    auto result = std::make_unique<unsigned[]>(NUMBER_OF_PRIMES_TO_FIND);
 
     findNumberOfFirstPrimes(result, NUMBER_OF_PRIMES_TO_FIND);
 
