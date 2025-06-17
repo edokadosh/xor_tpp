@@ -4,25 +4,26 @@
 using std::ostream;
 
 class Complex {
-  private:
-    double real;
-    double imaginary;
-
   public:
-    Complex() : real(0), imaginary(0){}
-    Complex(double real, double imaginary) : real(real), imaginary(imaginary) {}
+    Complex() : m_real(0), m_imaginary(0) {
+    }
+    Complex(double real, double imaginary) : m_real(real), m_imaginary(imaginary) {
+    }
+
+    double real();
+    double imaginary();
+    void setReaL(double real);
+    void setImaginary(double imaginary);
 
     bool operator==(Complex const &other);
     Complex operator+(Complex const &other);
     Complex operator-(Complex const &other);
     Complex operator*(Complex const &other);
 
-    /*
-    I didnt write getters and setters as instructed as they are not good 
-    practice, and not necessary for the exercizeif i want real adn imaginary 
-    accesible i would put them as public. :)
-    */
-
     // Defiend here as friend so that real, imaginary are accesible
-    friend std::ostream &operator<<(std::ostream &os, const Complex &obj); 
+    friend std::ostream &operator<<(std::ostream &os, const Complex &obj);
+
+  private:
+    double m_real;
+    double m_imaginary;
 };
