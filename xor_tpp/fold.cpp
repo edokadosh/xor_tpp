@@ -4,24 +4,24 @@
 using std::cin;
 using std::cout;
 using std::endl;
-
-constexpr unsigned TABLE_PADDING = 4;
-
-namespace {
-
 using std::string;
 using std::to_string;
 
+
+namespace {
+
+constexpr unsigned TABLE_PADDING = 4;
+
 // right pad a number with spaces
-string padInt(int num, int paddingLength) {
+string rightPadIntWithSpaces(int num, int paddingLength) {
     return string((paddingLength - to_string(num).length()), ' ') + to_string(num);
 }
 
 // print multiplication chart
-void printMult() {
+void printMultiplicationTable() {
     for (int i = 1; i <= 11; i++) {
         for (int j = 1; j <= 11; j++) {
-            cout << padInt(i * j, TABLE_PADDING);
+            cout << rightPadIntWithSpaces(i * j, TABLE_PADDING);
         }
         cout << endl;
     }
@@ -30,6 +30,6 @@ void printMult() {
 } // namespace
 
 int main() {
-    printMult();
+    printMultiplicationTable();
     return 0;
 }
