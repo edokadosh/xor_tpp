@@ -19,12 +19,16 @@ bool isPrime(const unsigned &num) {
 
 } // namespace
 
-int main() {
-    vector<unsigned> numbersToCheck = {4, 5, 23, 237, 7};
-
+void printPrimeTestResult(const vector<unsigned> &numbersToCheck) {
     for (const auto &num : numbersToCheck) {
         cout << num << " is " << (isPrime(num) ? "" : "not ") << "prime" << endl;
     }
+}
+
+int main() {
+    vector<unsigned> numbersToCheck = {4, 5, 23, 237, 7};
+
+    printPrimeTestResult(numbersToCheck);
 
     return 0;
 }
