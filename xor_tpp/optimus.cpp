@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 #include <vector>
 
 using std::cin;
@@ -8,7 +7,7 @@ using std::endl;
 
 namespace {
 // Check if unsigned value is prime
-bool isPrime(unsigned num) {
+bool isPrime(const unsigned &num) {
     for (unsigned i = 2; i * i <= num; i++) {
         if (num % i == 0) {
             return false;
