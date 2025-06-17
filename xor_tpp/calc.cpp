@@ -5,6 +5,11 @@ using std::cout;
 using std::endl;
 using std::cerr;
 
+namespace {
+void printErr(const char * what) {
+    cerr << "Exception: " << what << endl;
+}
+}
 
 int main() {
     Calculator mycalc;
@@ -17,7 +22,7 @@ int main() {
     try {
         mycalc.divide(10, 0);
     } catch (const std::exception &e) {
-        cerr << "Exception: " << e.what() << endl;
+        printErr(e.what());
     }
 
     cout << mycalc.calculate(10, '+', 6) << endl;
@@ -26,10 +31,8 @@ int main() {
     try {
         mycalc.calculate(10, 'a', 6);
     } catch (const std::exception &e) {
-        cerr << "Exception: " << e.what() << endl;
+        printErr(e.what());
     }
-	
-
 
 	return 0;
 }

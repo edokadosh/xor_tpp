@@ -1,5 +1,5 @@
 #pragma once
-#include <string>
+#include <stdexcept>
 
 class Calculator {
   public:
@@ -13,14 +13,17 @@ class Calculator {
 
 // I put the defenitions to the what function in the header file because they
 // are short and i dont mind them being inline
-class ZeroDivisionException : public std::exception {
+
+class CalculatorException : public std::exception {};
+
+class ZeroDivisionException : public CalculatorException {
   public:
     const char *what() const override {
         return "Encountered zero division";
     }
 };
 
-class UnknownOperatorException : public std::exception {
+class UnknownOperatorException : public CalculatorException {
   public:
     const char *what() const override {
         return "Encountered unknown operator";
