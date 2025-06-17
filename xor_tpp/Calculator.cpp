@@ -21,24 +21,19 @@ double Calculator::divide(double num1, double num2) {
 
 double Calculator::calculate(double num1, char op, double num2) {
     switch (op) {
-    case '+':
-    {
+    case '+': {
         return add(num1, num2);
     }
-    case '-': 
-    {
+    case '-': {
         return substract(num1, num2);
     }
-    case '*': 
-    {
+    case '*': {
         return multiply(num1, num2);
     }
-    case '/': 
-    {
+    case '/': {
         return divide(num1, num2);
     }
-    default:
-    {
+    default: {
         throw UnknownOperatorException();
     }
     }
