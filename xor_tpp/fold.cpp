@@ -19,8 +19,8 @@ string rightPadIntWithSpaces(int num, int paddingLength) {
     return string((paddingLength - to_string(num).length()), ' ') + to_string(num);
 }
 
-// print multiplication chart
-void printMultiplicationTable(unsigned size) {
+// print square multiplication chart
+void printSquareMultiplicationTable(unsigned size) {
     for (unsigned i = 1; i <= size; i++) {
         for (unsigned j = 1; j <= size; j++) {
             cout << rightPadIntWithSpaces(i * j, TABLE_PADDING);
@@ -32,6 +32,6 @@ void printMultiplicationTable(unsigned size) {
 } // namespace
 
 int main() {
-    printMultiplicationTable(SIZE_OF_TABLE);
+    printSquareMultiplicationTable(SIZE_OF_TABLE);
     return 0;
 }
