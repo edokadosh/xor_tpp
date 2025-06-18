@@ -30,17 +30,17 @@ void AllocationNode::pushBack(AllocationNode* newMem, size_t size) {
 
 
 void* operator new(size_t size) {
-    AllocationNode* newMem = static_cast<AllocationNode*>(malloc(sizeof(AllocationNode) + size));
+    AllocationNode* newMem = reinterpret_cast<AllocationNode*>(malloc(sizeof(AllocationNode) + size));
     if (!newMem) {
         throw std::bad_alloc();
     }
     AllocationNode::pushBack(newMem, size);
 
-    return newMem + 1;
+    return newMem + AllocationNode::NODE_TO_ALLOCATED_MEMORY;
 }
 
 void operator delete(void* ptr) {
-    AllocationNode* nodeToDelete = static_cast<AllocationNode*>(ptr) - 1;
+    AllocationNode* nodeToDelete = reinterpret_cast<AllocationNode*>(ptr) - 1;
     nodeToDelete->removeSelf();
     free(nodeToDelete);
 }
@@ -49,7 +49,8 @@ void AllocationNode::printAllocations() {
     AllocationNode* curr = first;
     cout << (curr ? "Memory Allocations: " : "No memory allocated") << endl;
     while (curr) {
-        cout << curr + 1 << ": Memory allocation of size - " << curr->m_size << endl;
+        cout << curr + AllocationNode::NODE_TO_ALLOCATED_MEMORY << ": Memory allocation of size - " << curr->m_size
+             << endl;
         curr = curr->m_next;
     }
     cout << endl;
