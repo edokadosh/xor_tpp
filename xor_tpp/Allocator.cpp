@@ -5,8 +5,6 @@
 using std::cout;
 using std::endl;
 
-namespace allocator {
-
 void AllocationNode::removeSelf() {
     if (prev) {
         prev->next = next;
@@ -46,4 +44,3 @@ void printAllocations() {
         curr = curr->next;
     }
 }
-} // namespace allocator
