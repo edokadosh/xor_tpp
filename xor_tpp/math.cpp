@@ -14,4 +14,7 @@ int main() {
     cout << num1 * num2 << endl;
 
     cout << (num1 == num2) << endl;
+
+    Complex num;
+    cout << num << endl;
 }

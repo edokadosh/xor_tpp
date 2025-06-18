@@ -1,5 +1,8 @@
 #include "Complex.h"
 
+Complex::Complex(double real, double imaginary) : m_real{real}, m_imaginary{imaginary} {
+}
+
 double Complex::real() {
     return m_real;
 }
@@ -8,7 +11,7 @@ double Complex::imaginary() {
     return m_imaginary;
 }
 
-void Complex::setReaL(double real) {
+void Complex::setReal(double real) {
     m_real = real;
 }
 

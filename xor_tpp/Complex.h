@@ -5,14 +5,12 @@ using std::ostream;
 
 class Complex {
   public:
-    Complex() : m_real(0), m_imaginary(0) {
-    }
-    Complex(double real, double imaginary) : m_real(real), m_imaginary(imaginary) {
-    }
+    Complex() = default;
+    Complex(double real, double imaginary);
 
     double real();
     double imaginary();
-    void setReaL(double real);
+    void setReal(double real);
     void setImaginary(double imaginary);
 
     bool operator==(Complex const &other);
@@ -24,6 +22,6 @@ class Complex {
     friend std::ostream &operator<<(std::ostream &os, const Complex &obj);
 
   private:
-    double m_real;
-    double m_imaginary;
+    double m_real = 0;
+    double m_imaginary = 0;
 };
