@@ -2,6 +2,7 @@
 
 using std::ostream;
 
+// Constructor to set m_real and m_imaginary
 Complex::Complex(double real, double imaginary) : m_real{real}, m_imaginary{imaginary} {}
 
 double Complex::getReal() {
@@ -20,19 +21,19 @@ void Complex::setImaginary(double imaginary) {
     m_imaginary = imaginary;
 }
 
-bool Complex::operator==(Complex const& other) {
+bool Complex::operator==(Complex const& other) const  {
     return this->m_real == other.m_real and this->m_imaginary == other.m_imaginary;
 }
 
-Complex Complex::operator+(Complex const& other) {
+Complex Complex::operator+(Complex const& other) const {
     return Complex(this->m_real + other.m_real, this->m_imaginary + other.m_imaginary);
 }
 
-Complex Complex::operator-(Complex const& other) {
+Complex Complex::operator-(Complex const& other) const {
     return Complex(this->m_real - other.m_real, this->m_imaginary - other.m_imaginary);
 }
 
-Complex Complex::operator*(Complex const& other) {
+Complex Complex::operator*(Complex const& other) const {
     return Complex(this->m_real * other.m_real - this->m_imaginary * other.m_imaginary,
                    this->m_real * other.m_imaginary + this->m_imaginary * other.m_real);
 }
