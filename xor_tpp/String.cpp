@@ -3,11 +3,16 @@
 
 using std::exchange;
 using std::ostream;
+using std::cerr;
+using std::endl;
 
 namespace string {
 
 String::String(const char* str) : m_chars(new char[strlen(str) + 1]) {
-    strcpy(m_chars, str);
+    size_t i = 0;
+    do {
+        m_chars[i] = str[i];
+    } while (str[i++]);
 }
 
 String::~String() {
@@ -15,7 +20,10 @@ String::~String() {
 }
 
 String::String(const String& other) : m_chars(new char[strlen(other.m_chars) + 1]) {
-    strcpy(m_chars, other.m_chars);
+    size_t i = 0;
+    do {
+        m_chars[i] = other.m_chars[i];
+    } while (other.m_chars[i++]);
 }
 
 String::String(String&& other) noexcept : m_chars(exchange(other.m_chars, nullptr)) {
@@ -31,8 +39,26 @@ String& String::operator=(String&& other) noexcept {
     return *this;
 }
 
+
 size_t String::length() const {
     return strlen(m_chars);
+}
+
+void String::clear() {
+    delete[] m_chars;
+    m_chars = new char[1];
+    *m_chars = '\0';
+}
+
+char& String::operator[](size_t idx) {
+    return m_chars[idx];
+
+}
+char String::operator[](size_t idx) const {
+    return m_chars[idx];
+}
+const char* String::c_str() const {
+    return m_chars;
 }
 
 ostream& operator<<(ostream& os, const String& obj) {

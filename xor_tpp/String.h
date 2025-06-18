@@ -13,6 +13,10 @@ class String {
     String& operator=(String&& other) noexcept;
 
     size_t length() const;
+    void clear();
+    char& operator[](size_t idx);
+    char operator[](size_t idx) const;
+    const char* c_str() const;
 
     friend std::ostream& operator<<(std::ostream& os, const String& obj);
 
