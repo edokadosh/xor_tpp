@@ -6,20 +6,17 @@ using std::ostream;
 namespace string {
 
 String::String(const char* str) {
-    m_chars = make_unique<char[]>(strlen(str) + 1);
+    std::cout << strlen(str) + 1 << std::endl;
+    m_chars = new char[strlen(str)+1];
     size_t index = 0;
     do {
         m_chars[index] = str[index];
+        std::cout << index << std::endl;
     } while (str[index++]);
 }
 
 size_t String::length() const {
-    size_t len = 0;
-    while (this->m_chars[len]) {
-        len++;
-    }
-
-    return len;
+    return strlen(m_chars);
 }
 
 ostream& operator<<(ostream& os, const String& obj) {

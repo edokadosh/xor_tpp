@@ -12,7 +12,7 @@ class String {
     friend std::ostream& operator<<(std::ostream& os, const String& obj);
 
   private:
-    std::unique_ptr<char[]> m_chars;
+    char* m_chars;
 };
 
 } // namespace string
