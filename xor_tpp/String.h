@@ -1,12 +1,13 @@
 #pragma once
 #include <iostream>
-#include <memory>
 
 namespace string {
 
 class String {
   public:
     explicit String(const char* str);
+    ~String();
+
     size_t length() const;
 
     friend std::ostream& operator<<(std::ostream& os, const String& obj);

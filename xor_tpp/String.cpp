@@ -1,18 +1,15 @@
 #include "String.h"
 
-using std::make_unique;
 using std::ostream;
 
 namespace string {
 
-String::String(const char* str) {
-    std::cout << strlen(str) + 1 << std::endl;
-    m_chars = new char[strlen(str)+1];
-    size_t index = 0;
-    do {
-        m_chars[index] = str[index];
-        std::cout << index << std::endl;
-    } while (str[index++]);
+String::String(const char* str) : m_chars(new char[strlen(str) + 1]) {
+    strcpy(m_chars, str);
+}
+
+String::~String() {
+    delete[] m_chars;
 }
 
 size_t String::length() const {
