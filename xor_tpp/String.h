@@ -7,6 +7,10 @@ class String {
   public:
     explicit String(const char* str);
     ~String();
+    String(const String& other);
+    String(String&& other) noexcept;
+    String& operator=(const String& other);
+    String& operator=(String&& other) noexcept;
 
     size_t length() const;
 
