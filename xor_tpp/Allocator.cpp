@@ -1,6 +1,6 @@
 #include "Allocator.h"
-#include <stdlib.h>
 #include <iostream>
+#include <stdlib.h>
 
 using std::cout;
 using std::endl;
@@ -8,32 +8,39 @@ using std::endl;
 AllocationNode* AllocationNode::first = nullptr;
 
 void AllocationNode::removeSelf() {
-    if (prev) {
-        prev->next = next;
+    if (m_prev) {
+        m_prev->m_next = m_next;
     } else {
-        first = next;
+        first = m_next;
     }
-    if (next) {
-        next->prev = prev;
+    if (m_next) {
+        m_next->m_prev = m_prev;
     }
 }
 
-void* operator new(size_t size) {
-    char* newMem = (char*)malloc(sizeof(AllocationNode) + size);
-    AllocationNode* newNode = (AllocationNode*)newMem;
-    newNode->size = size;
-    newNode->prev = nullptr;
-    newNode->next = AllocationNode::first;
+void AllocationNode::pushBack(AllocationNode* newMem, size_t size) {
+    newMem->m_size = size;
+    newMem->m_prev = nullptr;
+    newMem->m_next = AllocationNode::first;
     if (AllocationNode::first) {
-        AllocationNode::first->prev = newNode;
+        AllocationNode::first->m_prev = newMem;
     }
-    AllocationNode::first = newNode;
+    AllocationNode::first = newMem;
+}
 
-    return (newMem + sizeof(AllocationNode));
+
+void* operator new(size_t size) {
+    AllocationNode* newMem = static_cast<AllocationNode*>(malloc(sizeof(AllocationNode) + size));
+    if (!newMem) {
+        throw std::bad_alloc();
+    }
+    AllocationNode::pushBack(newMem, size);
+
+    return newMem + 1;
 }
 
 void operator delete(void* ptr) {
-    AllocationNode* nodeToDelete = (AllocationNode*)((char*)ptr - sizeof(AllocationNode));
+    AllocationNode* nodeToDelete = static_cast<AllocationNode*>(ptr) - 1;
     nodeToDelete->removeSelf();
     free(nodeToDelete);
 }
@@ -42,8 +49,8 @@ void AllocationNode::printAllocations() {
     AllocationNode* curr = first;
     cout << (curr ? "Memory Allocations: " : "No memory allocated") << endl;
     while (curr) {
-        cout << curr + 1 << ": Memory allocation of size - " << curr->size << endl; 
-        curr = curr->next;
+        cout << curr + 1 << ": Memory allocation of size - " << curr->m_size << endl;
+        curr = curr->m_next;
     }
     cout << endl;
 }
