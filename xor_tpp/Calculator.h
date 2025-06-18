@@ -12,9 +12,6 @@ class Calculator {
     double calculate(double num1, char op, double num2);
 };
 
-// I put the defenitions to the what function in the header file because they
-// are short and i dont mind them being inline
-
 class CalculatorException : public std::exception {};
 
 #define DEFINE_CALCULATOR_EXCEPTION(name)                                                                              \

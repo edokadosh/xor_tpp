@@ -31,7 +31,6 @@ int main() {
     try {
         mycalc.calculate(10, 'a', 6);
     } catch (const CalculatorException &e) {
-#include <iostream>
         printErr(e.what());
     }
 
