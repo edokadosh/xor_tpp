@@ -3,6 +3,7 @@
 
 using std::cout;
 using std::endl;
+using string::String;
 
 int main() {
     String myStr{"hello"};

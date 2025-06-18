@@ -1,16 +1,17 @@
 #pragma once
 #include <iostream>
 
-using std::make_unique;
-using std::ostream;
+namespace string {
 
 class String {
   public:
-    explicit String(const char *str);
+    explicit String(const char* str);
     size_t length() const;
 
-    friend ostream &operator<<(ostream &os, const String &obj);
+    friend std::ostream& operator<<(std::ostream& os, const String& obj);
 
   private:
     std::unique_ptr<char[]> m_chars;
 };
+
+} // namespace string
