@@ -5,10 +5,10 @@ class Complex {
   public:
     explicit Complex(double real = 0, double imaginary = 0);
 
-    double getReal();
-    double getImaginary();
-    void setReal(double real);
-    void setImaginary(double imaginary);
+    double getReal() const;
+    double getImaginary() const;
+    void setReal(const double real);
+    void setImaginary(const double imaginary);
 
     bool operator==(Complex const &other) const ;
     Complex operator+(Complex const &other) const ;

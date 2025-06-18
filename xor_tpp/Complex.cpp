@@ -6,19 +6,19 @@ Complex::Complex(double real /* = 0 */, double imaginary /* = 0 */) : m_real{rea
     // Left blank intentionally
 }
 
-double Complex::getReal() {
+double Complex::getReal() const {
     return m_real;
 }
 
-double Complex::getImaginary() {
+double Complex::getImaginary() const {
     return m_imaginary;
 }
 
-void Complex::setReal(double real) {
+void Complex::setReal(const double real) {
     m_real = real;
 }
 
-void Complex::setImaginary(double imaginary) {
+void Complex::setImaginary(const double imaginary) {
     m_imaginary = imaginary;
 }
 
