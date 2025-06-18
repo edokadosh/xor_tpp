@@ -11,6 +11,8 @@ using std::to_string;
 namespace {
 
 constexpr unsigned TABLE_PADDING = 4;
+constexpr unsigned SIZE_OF_TABLE = 11;
+
 
 // right pad a number with spaces
 string rightPadIntWithSpaces(int num, int paddingLength) {
@@ -18,9 +20,9 @@ string rightPadIntWithSpaces(int num, int paddingLength) {
 }
 
 // print multiplication chart
-void printMultiplicationTable() {
-    for (int i = 1; i <= 11; i++) {
-        for (int j = 1; j <= 11; j++) {
+void printMultiplicationTable(unsigned size) {
+    for (unsigned i = 1; i <= size; i++) {
+        for (unsigned j = 1; j <= size; j++) {
             cout << rightPadIntWithSpaces(i * j, TABLE_PADDING);
         }
         cout << endl;
@@ -30,6 +32,6 @@ void printMultiplicationTable() {
 } // namespace
 
 int main() {
-    printMultiplicationTable();
+    printMultiplicationTable(SIZE_OF_TABLE);
     return 0;
 }
