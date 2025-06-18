@@ -7,8 +7,8 @@ class Complex {
 
     double getReal() const;
     double getImaginary() const;
-    void setReal(const double real);
-    void setImaginary(const double imaginary);
+    void setReal(const double& real);
+    void setImaginary(const double& imaginary);
 
     bool operator==(Complex const &other) const ;
     Complex operator+(Complex const &other) const ;

@@ -14,11 +14,11 @@ double Complex::getImaginary() const {
     return m_imaginary;
 }
 
-void Complex::setReal(const double real) {
+void Complex::setReal(const double& real) {
     m_real = real;
 }
 
-void Complex::setImaginary(const double imaginary) {
+void Complex::setImaginary(const double& imaginary) {
     m_imaginary = imaginary;
 }
 
