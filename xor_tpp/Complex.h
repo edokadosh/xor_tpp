@@ -3,7 +3,7 @@
 
 class Complex {
   public:
-    Complex(double real = 0, double imaginary = 0);
+    explicit Complex(double real = 0, double imaginary = 0);
 
     double getReal();
     double getImaginary();

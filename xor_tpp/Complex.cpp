@@ -2,6 +2,7 @@
 
 using std::ostream;
 
+// Default values are real = 0, imaginary = 0
 // Left blank intentionally
 Complex::Complex(double real, double imaginary) : m_real{real}, m_imaginary{imaginary} {}
 

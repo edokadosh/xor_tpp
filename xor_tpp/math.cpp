@@ -15,6 +15,6 @@ int main() {
 
     cout << (num1 == num2) << endl;
 
-    Complex num;
+    Complex num{};
     cout << num << endl;
 }
