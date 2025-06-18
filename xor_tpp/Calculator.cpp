@@ -1,5 +1,11 @@
 #include "Calculator.h"
 
+namespace calculator {
+
+void printErr(const char *what) {
+    cerr << "Exception: " << what << endl;
+}
+
 double Calculator::add(double num1, double num2) {
     return num1 + num2;
 }
@@ -38,3 +44,6 @@ double Calculator::calculate(double num1, char op, double num2) {
     }
     }
 }
+
+}
+

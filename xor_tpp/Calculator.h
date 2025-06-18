@@ -1,5 +1,13 @@
 #pragma once
+#include <iostream>
 #include <stdexcept>
+
+using std::cerr;
+using std::endl;
+
+namespace calculator {
+
+void printErr(const char *what);
 
 class Calculator {
   public:
@@ -13,22 +21,15 @@ class Calculator {
 // I put the defenitions to the what function in the header file because they
 // are short and i dont mind them being inline
 
-class CalculatorException : public std::exception {
-    const char *msg;
+class CalculatorException : public std::exception {};
 
-  public:
-    CalculatorException(const char *m) : msg(m) {
-    }
-    const char *what() const noexcept override {
-        return msg;
-    }
-};
-
-#define DEFINE_EXCEPTION(name, message)                                                                                \
+#define DEFINE_CALCULATOR_EXCEPTION(name)                                                                              \
     class name : public CalculatorException {                                                                          \
       public:                                                                                                          \
-        name() : CalculatorException(message) {}                                                                       \
+        const char *what() const noexcept override { return "Encountered " #name; }                                     \
     };
 
-DEFINE_EXCEPTION(ZeroDivisionException, "Encountered zero division")
-DEFINE_EXCEPTION(UnknownOperatorException, "Encountered unknown operator")
+DEFINE_CALCULATOR_EXCEPTION(ZeroDivisionException)
+DEFINE_CALCULATOR_EXCEPTION(UnknownOperatorException)
+
+} // namespace calculator

@@ -5,14 +5,9 @@ using std::cerr;
 using std::cout;
 using std::endl;
 
-namespace {
-void printErr(const char *what) {
-    cerr << "Exception: " << what << endl;
-}
-} // namespace
 
 int main() {
-    Calculator mycalc;
+    calculator::Calculator mycalc;
 
     cout << mycalc.add(5, 6) << endl;
     cout << mycalc.substract(10, 6) << endl;
@@ -21,8 +16,8 @@ int main() {
 
     try {
         mycalc.divide(10, 0);
-    } catch (const CalculatorException &e) {
-        printErr(e.what());
+    } catch (const calculator::CalculatorException &e) {
+        calculator::printErr(e.what());
     }
 
     cout << mycalc.calculate(10, '+', 6) << endl;
@@ -30,8 +25,8 @@ int main() {
 
     try {
         mycalc.calculate(10, 'a', 6);
-    } catch (const CalculatorException &e) {
-        printErr(e.what());
+    } catch (const calculator::CalculatorException &e) {
+        calculator::printErr(e.what());
     }
 
     return 0;
