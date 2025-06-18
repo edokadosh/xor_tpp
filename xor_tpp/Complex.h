@@ -1,8 +1,6 @@
 #pragma once
 #include <iostream>
 
-using std::ostream;
-
 class Complex {
   public:
     Complex() = default;
