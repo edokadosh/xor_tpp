@@ -2,6 +2,8 @@
 
 using std::ostream;
 
+namespace complex {
+
 Complex::Complex(double real /* = 0 */, double imaginary /* = 0 */) : m_real{real}, m_imaginary{imaginary} {
     // Left blank intentionally
 }
@@ -44,3 +46,5 @@ ostream& operator<<(ostream& os, const Complex& obj) {
 
     return os;
 }
+
+} // namespace complext

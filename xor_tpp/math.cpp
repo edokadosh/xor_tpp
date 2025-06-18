@@ -3,7 +3,7 @@
 
 using std::cout;
 using std::endl;
-
+using complex::Complex;
 
 int main() {
     const Complex num1(4, 5);
