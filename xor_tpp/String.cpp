@@ -46,8 +46,7 @@ size_t String::length() const {
 
 void String::clear() {
     delete[] m_chars;
-    m_chars = new char[1];
-    *m_chars = '\0';
+    m_chars = new char{'\0'};
 }
 
 char& String::operator[](size_t idx) {

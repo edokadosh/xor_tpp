@@ -6,7 +6,7 @@ namespace string {
 class String {
   public:
     explicit String(const char* str);
-    ~String();
+    virtual ~String();
     String(const String& other);
     String(String&& other) noexcept;
     String& operator=(const String& other);
