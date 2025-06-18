@@ -1,13 +1,18 @@
-#include "Calculator.h"
 #include <iostream>
+#include "Calculator.h"
+#include "ErrorUtils.h"
 
 using std::cerr;
 using std::cout;
 using std::endl;
 
+using calculator::Calculator;
+using calculator::CalculatorException;
+using error_utils::printErr;
+
 
 int main() {
-    calculator::Calculator mycalc;
+    Calculator mycalc;
 
     cout << mycalc.add(5, 6) << endl;
     cout << mycalc.substract(10, 6) << endl;
@@ -16,8 +21,8 @@ int main() {
 
     try {
         mycalc.divide(10, 0);
-    } catch (const calculator::CalculatorException &e) {
-        calculator::printErr(e.what());
+    } catch (const CalculatorException &e) {
+        printErr(e.what());
     }
 
     cout << mycalc.calculate(10, '+', 6) << endl;
@@ -25,8 +30,9 @@ int main() {
 
     try {
         mycalc.calculate(10, 'a', 6);
-    } catch (const calculator::CalculatorException &e) {
-        calculator::printErr(e.what());
+    } catch (const CalculatorException &e) {
+#include <iostream>
+        printErr(e.what());
     }
 
     return 0;

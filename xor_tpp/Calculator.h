@@ -1,13 +1,7 @@
 #pragma once
-#include <iostream>
 #include <stdexcept>
 
-using std::cerr;
-using std::endl;
-
 namespace calculator {
-
-void printErr(const char *what);
 
 class Calculator {
   public:
@@ -26,7 +20,7 @@ class CalculatorException : public std::exception {};
 #define DEFINE_CALCULATOR_EXCEPTION(name)                                                                              \
     class name : public CalculatorException {                                                                          \
       public:                                                                                                          \
-        const char *what() const noexcept override { return "Encountered " #name; }                                     \
+        const char *what() const noexcept override { return "Encountered " #name; }                                    \
     };
 
 DEFINE_CALCULATOR_EXCEPTION(ZeroDivisionException)
