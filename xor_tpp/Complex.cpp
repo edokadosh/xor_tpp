@@ -2,10 +2,7 @@
 
 using std::ostream;
 
-/*
-explicit Complex(double real = 0, double imaginary = 0);
-*/
-Complex::Complex(double real, double imaginary) : m_real{real}, m_imaginary{imaginary} {
+Complex::Complex(double real /* = 0 */, double imaginary /* = 0 */) : m_real{real}, m_imaginary{imaginary} {
     // Left blank intentionally
 }
 
