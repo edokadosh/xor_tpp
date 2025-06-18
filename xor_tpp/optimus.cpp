@@ -9,6 +9,9 @@ using std::vector;
 namespace {
 // Check if unsigned value is prime
 bool isPrime(const unsigned &num) {
+    if (num == 0 or num == 1) {
+        return false;
+    }
     for (unsigned i = 2; i * i <= num; i++) {
         if (num % i == 0) {
             return false;
