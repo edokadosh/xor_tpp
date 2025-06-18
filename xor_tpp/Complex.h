@@ -8,8 +8,8 @@ class Complex {
     Complex() = default;
     Complex(double real, double imaginary);
 
-    double real();
-    double imaginary();
+    double getReal();
+    double getImaginary();
     void setReal(double real);
     void setImaginary(double imaginary);
 

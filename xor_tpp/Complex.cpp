@@ -1,13 +1,14 @@
 #include "Complex.h"
 
-Complex::Complex(double real, double imaginary) : m_real{real}, m_imaginary{imaginary} {
-}
+using std::ostream;
 
-double Complex::real() {
+Complex::Complex(double real, double imaginary) : m_real{real}, m_imaginary{imaginary} {}
+
+double Complex::getReal() {
     return m_real;
 }
 
-double Complex::imaginary() {
+double Complex::getImaginary() {
     return m_imaginary;
 }
 
@@ -19,24 +20,24 @@ void Complex::setImaginary(double imaginary) {
     m_imaginary = imaginary;
 }
 
-bool Complex::operator==(Complex const &other) {
+bool Complex::operator==(Complex const& other) {
     return this->m_real == other.m_real and this->m_imaginary == other.m_imaginary;
 }
 
-Complex Complex::operator+(Complex const &other) {
+Complex Complex::operator+(Complex const& other) {
     return Complex(this->m_real + other.m_real, this->m_imaginary + other.m_imaginary);
 }
 
-Complex Complex::operator-(Complex const &other) {
+Complex Complex::operator-(Complex const& other) {
     return Complex(this->m_real - other.m_real, this->m_imaginary - other.m_imaginary);
 }
 
-Complex Complex::operator*(Complex const &other) {
+Complex Complex::operator*(Complex const& other) {
     return Complex(this->m_real * other.m_real - this->m_imaginary * other.m_imaginary,
                    this->m_real * other.m_imaginary + this->m_imaginary * other.m_real);
 }
 
-std::ostream &operator<<(std::ostream &os, const Complex &obj) {
+ostream& operator<<(ostream& os, const Complex& obj) {
     os << "(" << obj.m_real << "+" << obj.m_imaginary << "i)";
 
     return os;
