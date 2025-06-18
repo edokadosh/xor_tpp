@@ -2,9 +2,12 @@
 
 using std::ostream;
 
-// Default values are real = 0, imaginary = 0
-// Left blank intentionally
-Complex::Complex(double real, double imaginary) : m_real{real}, m_imaginary{imaginary} {}
+/*
+explicit Complex(double real = 0, double imaginary = 0);
+*/
+Complex::Complex(double real, double imaginary) : m_real{real}, m_imaginary{imaginary} {
+    // Left blank intentionally
+}
 
 double Complex::getReal() {
     return m_real;
@@ -22,7 +25,7 @@ void Complex::setImaginary(double imaginary) {
     m_imaginary = imaginary;
 }
 
-bool Complex::operator==(Complex const& other) const  {
+bool Complex::operator==(Complex const& other) const {
     return this->m_real == other.m_real and this->m_imaginary == other.m_imaginary;
 }
 
