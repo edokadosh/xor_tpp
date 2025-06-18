@@ -5,7 +5,7 @@ using std::cout;
 using std::endl;
 
 int main() {
-    String myStr = "hello";
+    String myStr{"hello"};
 
     cout << myStr << endl;
 }

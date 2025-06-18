@@ -1,13 +1,16 @@
 #pragma once
 #include <iostream>
 
+using std::make_unique;
+using std::ostream;
+
 class String {
   public:
-    String(const char *str);
+    explicit String(const char *str);
+    size_t length() const;
 
-    friend std::ostream &operator<<(std::ostream &os, const String &obj);
+    friend ostream &operator<<(ostream &os, const String &obj);
 
   private:
-    std::unique_ptr<char[]> m_chars = nullptr;
-    size_t m_length;
+    std::unique_ptr<char[]> m_chars;
 };
