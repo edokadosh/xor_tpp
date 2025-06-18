@@ -443,3 +443,4 @@ FodyWeavers.xsd
 xor_tpp/xor_tpp.vcxproj
 xor_tpp/xor_tpp.vcxproj.filters
 xor_tpp/xor_tpp.vcxproj.user
+xor_tpp/.clang-format
