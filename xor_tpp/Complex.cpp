@@ -2,7 +2,7 @@
 
 using std::ostream;
 
-// Constructor to set m_real and m_imaginary
+// Left blank intentionally
 Complex::Complex(double real, double imaginary) : m_real{real}, m_imaginary{imaginary} {}
 
 double Complex::getReal() {
