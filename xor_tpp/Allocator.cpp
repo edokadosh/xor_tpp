@@ -5,6 +5,8 @@
 using std::cout;
 using std::endl;
 
+AllocationNode* AllocationNode::first = nullptr;
+
 void AllocationNode::removeSelf() {
     if (prev) {
         prev->next = next;
@@ -21,11 +23,11 @@ void* operator new(size_t size) {
     AllocationNode* newNode = (AllocationNode*)newMem;
     newNode->size = size;
     newNode->prev = nullptr;
-    newNode->next = first;
-    if (first) {
-        first->prev = newNode;
+    newNode->next = AllocationNode::first;
+    if (AllocationNode::first) {
+        AllocationNode::first->prev = newNode;
     }
-    first = newNode;
+    AllocationNode::first = newNode;
 
     return (newMem + sizeof(AllocationNode));
 }
@@ -36,11 +38,12 @@ void operator delete(void* ptr) {
     free(nodeToDelete);
 }
 
-void printAllocations() {
+void AllocationNode::printAllocations() {
     AllocationNode* curr = first;
-    cout << (curr ? "Memory Allocations" : "No memory allocated") << endl;
+    cout << (curr ? "Memory Allocations: " : "No memory allocated") << endl;
     while (curr) {
         cout << curr + 1 << ": Memory allocation of size - " << curr->size << endl; 
         curr = curr->next;
     }
+    cout << endl;
 }

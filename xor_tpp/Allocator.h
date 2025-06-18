@@ -7,12 +7,13 @@ public:
     AllocationNode* prev;
 
     void removeSelf();
+
+    static AllocationNode* first;
+    static void printAllocations();
 };
 
-AllocationNode* first = nullptr;
 
 void* operator new(size_t size);
 
 void operator delete(void* ptr);
 
-void printAllocations();

@@ -7,9 +7,9 @@ using std::endl;
 int main() {
     void* a = new int[6];
     void* b = new char[10];
-    printAllocations();
+    AllocationNode::printAllocations();
     delete a;
     delete b;
-    printAllocations();
+    AllocationNode::printAllocations();
 }
 
