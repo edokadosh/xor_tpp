@@ -1,0 +1,21 @@
+---
+BasedOnStyle: Microsoft 
+IndentWidth: 4 
+--- 
+Language: Cpp 
+DerivePointerAlignment: false 
+PointerAlignment: Left
+
+BraceWrapping:
+  AfterClass: false
+  AfterControlStatement: false
+  AfterEnum: false
+  AfterFunction: false
+  AfterNamespace: false
+  AfterStruct: false
+  AfterUnion: false
+  BeforeCatch: false
+  BeforeElse: false
+  IndentBraces: false
+
+

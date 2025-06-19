@@ -1,10 +1,12 @@
 #include "String.h"
 #include <utility>
+#include <format>
 
-using std::exchange;
-using std::ostream;
 using std::cerr;
 using std::endl;
+using std::exchange;
+using std::ostream;
+using std::format;
 
 namespace string {
 
@@ -39,7 +41,6 @@ String& String::operator=(String&& other) noexcept {
     return *this;
 }
 
-
 size_t String::length() const {
     return strlen(m_chars);
 }
@@ -49,13 +50,23 @@ void String::clear() {
     m_chars = new char{'\0'};
 }
 
-char& String::operator[](size_t idx) {
-    return m_chars[idx];
+void String::checkIndex(size_t idx) const {
+    if (idx < 0 or idx > strlen(m_chars)) {
+        throw std::out_of_range(format("Error: index {} is out of range for string of size {}", idx, strlen(m_chars)));
+    }
+}
 
-}
-char String::operator[](size_t idx) const {
+
+char& String::operator[](size_t idx) {
+    checkIndex(idx);
     return m_chars[idx];
 }
+
+char String::operator[](size_t idx) const {
+    checkIndex(idx);
+    return m_chars[idx];
+}
+
 const char* String::c_str() const {
     return m_chars;
 }

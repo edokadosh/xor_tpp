@@ -22,6 +22,7 @@ class String {
 
   private:
     char* m_chars;
+    void checkIndex(size_t idx) const;
 };
 
 } // namespace string
