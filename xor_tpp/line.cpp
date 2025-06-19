@@ -29,8 +29,8 @@ int main() {
 	copy(vec.begin(), vec.end(), ostream_iterator<int>(cout, " "));
 	cout << endl;
 
-	vector<int> diff(vec.size() - 1);
-	transform(vec.begin(), --vec.end(), ++vec.begin(), diff.begin(), [](int a, int b) {return b - a; });
+	vector<int> diff;
+	transform(vec.begin(), --vec.end(), ++vec.begin(), back_inserter(diff), minus<int>());
 	cout << "8. ";
 	copy(diff.begin(), diff.end(), ostream_iterator<int>(cout, " "));
 	cout << endl;
